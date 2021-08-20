@@ -1,6 +1,6 @@
 <template>
   <h1>{{ title }}</h1>
-  <Modal />
+  <Modal header="this is me sadiq!" />
 </template>
 
 <script>

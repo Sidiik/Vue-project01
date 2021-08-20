@@ -1,12 +1,24 @@
 <template>
-  <div class="backdrop">
-    <div class="modal">
-      <h1>Modal title</h1>
+  <div class="backdrop" ref="backdrop">
+    <div class="modal" ref="modal">
+      <h1>{{ header }}</h1>
       <p>Modal content here</p>
-      <button>close</button>
+      <button @click="handleClick">close</button>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: ["header"],
+  methods: {
+    handleClick() {
+      this.$refs.modal.classList.add("hide");
+      this.$refs.backdrop.classList.add("hide");
+    },
+  },
+};
+</script>
 
 <style scoped>
 .backdrop {
@@ -18,6 +30,10 @@
   display: flex;
   align-items: center;
   height: 100vh;
+  transition: all 0.3s ease;
+}
+.backdrop .hide {
+  display: none;
 }
 .modal {
   background-color: white;
@@ -25,7 +41,10 @@
   margin: auto;
   padding: 2rem;
   border-radius: 0.4rem;
+  transform-origin: top;
+  transition: all 0.3s ease;
 }
+
 h1 {
   color: red;
 }
@@ -38,5 +57,9 @@ button {
   border-radius: 0.2rem;
   cursor: pointer;
   font-size: 1rem;
+}
+.hide {
+  opacity: 0;
+  transform: scale(1, 0);
 }
 </style>
