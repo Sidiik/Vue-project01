@@ -2,21 +2,14 @@
   <div class="backdrop" ref="backdrop">
     <div class="modal" ref="modal">
       <h1>{{ header }}</h1>
-      <p>Modal content here</p>
-      <button @click="handleClick">close</button>
+      <p>{{ text }}</p>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["header"],
-  methods: {
-    handleClick() {
-      this.$refs.modal.classList.add("hide");
-      this.$refs.backdrop.classList.add("hide");
-    },
-  },
+  props: ["header", "text"],
 };
 </script>
 
@@ -32,9 +25,7 @@ export default {
   height: 100vh;
   transition: all 0.3s ease;
 }
-.backdrop .hide {
-  display: none;
-}
+
 .modal {
   background-color: white;
   width: 50%;
@@ -57,9 +48,5 @@ button {
   border-radius: 0.2rem;
   cursor: pointer;
   font-size: 1rem;
-}
-.hide {
-  opacity: 0;
-  transform: scale(1, 0);
 }
 </style>

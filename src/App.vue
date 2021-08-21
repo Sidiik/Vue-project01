@@ -1,6 +1,6 @@
 <template>
   <h1>{{ title }}</h1>
-  <Modal header="this is me sadiq!" />
+  <Modal :header="header" :text="text" />
 </template>
 
 <script>
@@ -11,14 +11,9 @@ export default {
   components: { Modal },
   data() {
     return {
-      title: "This is my last and first vue app",
+      header: "this is the new success range",
+      text: "texted ",
     };
-  },
-  methods: {
-    handleClick() {
-      console.log(this.$refs.name);
-      this.$refs.name.focus();
-    },
   },
 };
 </script>
