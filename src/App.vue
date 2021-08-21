@@ -1,6 +1,9 @@
 <template>
   <h1>{{ title }}</h1>
-  <Modal :header="header" :text="text" />
+  <div v-if="showModal">
+    <Modal :header="header" :text="text" theme="sale" />
+  </div>
+  <button @click="openModal">Open modal</button>
 </template>
 
 <script>
@@ -13,7 +16,14 @@ export default {
     return {
       header: "this is the new success range",
       text: "texted ",
+      title: "welcome...",
+      showModal: false,
     };
+  },
+  methods: {
+    openModal() {
+      this.showModal = !this.showModal;
+    },
   },
 };
 </script>

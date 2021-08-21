@@ -1,6 +1,6 @@
 <template>
   <div class="backdrop" ref="backdrop">
-    <div class="modal" ref="modal">
+    <div class="modal" :class="{ sale: theme === 'sale' }">
       <h1>{{ header }}</h1>
       <p>{{ text }}</p>
     </div>
@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  props: ["header", "text"],
+  props: ["header", "text", "theme"],
 };
 </script>
 
@@ -48,5 +48,12 @@ button {
   border-radius: 0.2rem;
   cursor: pointer;
   font-size: 1rem;
+}
+.modal.sale {
+  background: crimson;
+  color: white;
+}
+.modal.sale h1 {
+  color: white;
 }
 </style>
