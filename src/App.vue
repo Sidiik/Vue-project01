@@ -1,9 +1,29 @@
 <template>
   <h1>{{ title }}</h1>
-  <div v-if="showModal">
-    <Modal :header="header" :text="text" theme="sale" />
-  </div>
+  <teleport to=".modals" v-if="showModal">
+    <Modal theme="" @close="openModal">
+      <h1>
+        Sadiq's give away
+      </h1>
+      <p>Get your way of happiness</p>
+      <template v-slot:links>
+        <a href="#">Get our the info</a>
+      </template>
+    </Modal>
+  </teleport>
+  <teleport to=".modals" v-if="showModalTwo">
+    <Modal theme="" @close="openModalTwo">
+      <h1>
+        Sadiq's give away Two
+      </h1>
+      <p>Get your way of happiness</p>
+      <template v-slot:links>
+        <a href="#">Get our the info</a>
+      </template>
+    </Modal>
+  </teleport>
   <button @click="openModal">Open modal</button>
+  <button @click="openModalTwo">Open modal Two</button>
 </template>
 
 <script>
@@ -16,20 +36,25 @@ export default {
     return {
       header: "this is the new success range",
       text: "texted ",
-      title: "welcome...",
+      title: "Welcome to my first vue app",
       showModal: false,
+      showModalTwo: false,
     };
   },
   methods: {
     openModal() {
       this.showModal = !this.showModal;
     },
+    openModalTwo() {
+      this.showModalTwo = !this.showModalTwo;
+    },
   },
 };
 </script>
 
 <style>
-#app {
+#app,
+.modals {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
